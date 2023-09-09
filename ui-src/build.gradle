@@ -1,0 +1,31 @@
+// 1
+plugins {
+  id 'java'
+  //id "com.moowork.node" version "1.2.0"
+  id("com.github.node-gradle.node") version "2.2.0"
+}
+
+version '0.0.1'
+// 2
+node {
+  version = '8.12.0'
+  npmVersion = '6.4.1'
+  download = true
+  distBaseUrl = 'https://nodejs.org/dist'
+  workDir = file("${project.buildDir}/node")
+  nodeModulesDir = file("${project.projectDir}")
+  if(!nodeModulesDir.isDirectory()){
+  	nodeModulesDir.mkdirs()
+  }	
+}
+
+// 3
+
+
+// 4
+//task build(type: NpmTask) {
+//	args = ['run', 'build']
+//}
+
+processResources.dependsOn('npm_run_build')
+build.dependsOn(npm_install)

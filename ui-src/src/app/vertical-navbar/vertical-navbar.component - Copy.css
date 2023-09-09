@@ -1,0 +1,72 @@
+
+ /* :vertical navigation bar */
+ ul.vertical.menubutton{
+    top: -.5vw;
+}
+
+ul.vertical.menubutton > a {
+    padding: 4px 6px;
+}
+
+ul.vertical {
+    top: 5%;
+    /* max-width: 80vw; */
+    list-style-type: none;
+    margin: 40px 10px;
+    padding: 0px;
+    width: 20%;
+    float: left;    
+    position: fixed;
+    max-height: 80%;
+    overflow: auto;    
+}
+
+a.menubar {
+    padding:0px;
+    /* line-height:1%; */
+
+}
+
+/* On screens that are 992px or less, set the background color to blue */
+@media screen and (max-width: 769px) {
+    ul.vertical {
+        z-index: 20;
+        width: 30%;
+  }
+}
+
+/* On screens that are 992px or less, set the background color to blue */
+@media screen and (min-width: 769px) {
+    ul.vertical {
+        z-index: auto;
+  }
+}
+
+ul.vertical li {
+    /* border: 1px solid green; */
+    margin: 20px;
+    padding: 0;
+    border-radius: 5px; 
+}
+
+li.vertical a {
+    display: block;
+    border: 1.25px solid green; 
+    color: green;
+    background-color: white;
+    text-align: left;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-family: Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	font-style: normal;
+	font-variant: normal;
+    font-weight: 400;
+    border-radius: 5px;
+}	
+
+li.vertical a:hover {
+    background-color: green;
+    color: white;
+}
+

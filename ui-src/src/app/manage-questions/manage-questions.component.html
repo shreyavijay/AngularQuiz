@@ -1,0 +1,40 @@
+<div class="form-container-wrapper">
+    <div class="form-container">
+        <div id="section_manageQuestions" class="section">
+            <h2 class="section-heading"> {{testName}} </h2>
+            <button class="button save-button addQuestionButton" (click)="addEditQuestion()">Add New Question</button>
+            <app-modify-question *ngIf="addQuestion" [action]="action"
+                (closeModifyQuestionModal)="oncloseModal($event)"></app-modify-question>
+
+            <div *ngFor="let question of questions; let i=index" class="section accordion-wrapper">
+                <button class="accordion" id="questionButton">{{question.question}}</button>
+                <div class="accordion-container">
+                    <p class="answer" *ngFor="let option of question.options; let j=index">{{j+1}}. {{option.name}}</p>
+                    <div class="button-group-right">
+                        <button class="button save-button" (click)="addEditQuestion(question)">Edit</button>
+                        <app-modify-question *ngIf="modifyQuestion" [question]="question" [action]="action"
+                            (closeModifyQuestionModal)="oncloseModal($event)"></app-modify-question>
+                        <!-- <button class="button save-button" onclick="openModal(this)">Delete hero</button> -->
+                        <button class="button save-button" (click)="deleteQuestion(question)">Delete hero</button>
+                        <div id="deleteModal"></div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+</div>

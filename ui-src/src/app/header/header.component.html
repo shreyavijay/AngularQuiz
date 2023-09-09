@@ -1,0 +1,46 @@
+<app-sign-in *ngIf="signIn" (closeSignInModal)="onCloseModal($event)"></app-sign-in>
+<app-sign-up *ngIf="signUp" (closeSignUpModal)="onCloseModal($event)"></app-sign-up>
+<app-developer-sign-in *ngIf="developerSignIn" (closeDeveloprSignInModal)="onCloseModal($event)"></app-developer-sign-in>
+<ul class="horizontal">
+<li class="vertical" *ngIf="menubarFlag">
+    <!-- <a href="#manageTests" id="manageTests">Manage Tests</a> -->
+    <a id="menu" class="menubar" (click)="toggleDisplayOfNavPanel()">
+        <!-- <i class="fa fa-bars" aria-hidden="true">Menu</i> -->
+        <!-- <i class="fas fa-bars" style="font-size:24px;color:white">f0c9</i> -->
+        <i class="fa menuicon">&#xf0c9;&nbsp;</i>
+    </a>
+
+</li>
+  <li class="horizontal">
+      <a href="#home">Home</a>
+  </li>
+  <li class="horizontal">
+      <a href="#news">News</a>
+  </li>
+  <li class="horizontal">
+      <a href="#contact">Contact</a>
+  </li>
+  <li class="horizontal">
+      <a routerLink="/register" href="#about">About</a>
+  </li>
+  <li *ngIf="!loginSrvc.userSignedIn()" class="horizontal">
+      <a (click)="signUpFn(true)" >
+          SignUp
+      </a>
+  </li>
+  <li *ngIf="!loginSrvc.userSignedIn()" class="horizontal" style="float:right">
+      <a (click)="developerSignIn=true">
+          Developer SignIn
+      </a>
+  </li>
+  <li *ngIf="!loginSrvc.userSignedIn()" class="horizontal" style="float:right">
+    <a (click)="signIn=true" >
+        Employer SignIn
+    </a>
+  </li>
+  <li *ngIf="loginSrvc.userSignedIn()" class="horizontal" style="float:right">
+        <a (click)="loginSrvc.signOut()">
+            SignOut
+        </a>
+      </li>    
+</ul>

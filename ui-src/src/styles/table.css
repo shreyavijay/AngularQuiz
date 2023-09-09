@@ -1,0 +1,49 @@
+table {
+    border-collapse: collapse;
+    width: 100%;
+    border-radius: 2px;
+}
+
+table, th, td {
+   border: 1px solid #ddd;
+   text-align: left;
+   padding: 8px;
+   
+}
+
+tr {
+    height: 35px;
+}
+
+tr:nth-of-type(even) {
+    background-color:  #f2f2f2;
+} 
+
+
+th {
+    background-color: green;
+    color: white;
+    padding: 2%;
+    font-size: 15px;
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    text-align:  center;
+    height: 100%;
+
+
+ }
+
+td.format {
+    text-align: center;
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    min-width: 30%;
+}
+
+td {
+    padding: 1%;
+    height: 50%;
+    /* width: 100%; */
+}
+.button.save-button.table-button {
+	width: 75%;
+}

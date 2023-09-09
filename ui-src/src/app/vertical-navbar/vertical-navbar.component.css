@@ -1,0 +1,62 @@
+
+
+ul.vertical {
+    /* top: 6%; */
+    /* max-width: 80vw; */
+    list-style-type: none;
+    margin: 20px 0px;
+    padding-top: 1.5vw;
+    width: 20%;
+    float: left;    
+    position: fixed;
+    max-height: 80%;
+    overflow: auto;    
+    height: 100%;
+    background-color: #F5F5F5;
+}
+
+
+/* On screens that are 992px or less, set the background color to blue */
+@media screen and (max-width: 768px) {
+    ul.vertical {
+        z-index: 9;
+        width: 50%;
+        padding-top: 10vw;
+    }
+    ul.vertical li.vertical {
+        /* border: 1px solid green; */
+        margin-top: 6vw;
+        margin-bottom: 6vw;
+    }    
+
+}
+
+ul.vertical li {
+    /* border: 1px solid green; */
+    margin: 20px;
+    padding: 0;
+    border-radius: 5px; 
+}
+
+li.vertical a {
+    display: block;
+    /* border: 1.25px solid green;  */
+    color: green;
+    background-color: white;
+    text-align: left;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-family: Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	font-style: normal;
+	font-variant: normal;
+    font-weight: 700;
+    /* border-radius: 5px; */
+}	
+
+li.vertical a:hover {
+    background-color: white;
+    color: green;
+    text-decoration-line: underline;
+}
+

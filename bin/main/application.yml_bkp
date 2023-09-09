@@ -1,0 +1,31 @@
+server:
+  port: 8080
+  contextPath: /
+  error:
+    whitelabel:
+      enabled: false
+      
+spring:
+  application:
+   name: quiz      
+  profiles:
+    active: dev
+
+spring:
+  profiles: dev
+
+  datasource:
+      url: 'jdbc:oracle:thin:@//192.168.2.49:1521/XEPDB1'
+      username: system
+      password: shreya
+      driverClassName: 'com.jdbc.OracleDriver'
+      jpa:
+        hibernate:
+           ddl-auto:update  
+        
+db:
+  username: 
+  password:
+  url: jdbc:oracle:thin@//192.168.2.49:1521/XEPDB1
+  
+  //logging.level.root=DEBUG

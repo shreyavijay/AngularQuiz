@@ -1,0 +1,111 @@
+buildscript {
+  ext {
+    springBootVersion = '2.6.2'
+  }
+ 
+  repositories {
+    mavenCentral()
+  }
+ 
+  dependencies {
+    classpath "org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}"
+  }
+  
+configurations {
+		all {
+        	exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
+    		}	
+	}
+  
+}
+
+
+plugins {
+	id 'org.springframework.boot' version '2.3.6.RELEASE'
+	id 'io.spring.dependency-management' version '1.0.9.RELEASE'
+	id 'java'
+}
+
+apply plugin: 'java'
+group = 'com.quiz'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+targetCompatibility = '1.8'
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+repositories {
+	mavenCentral()
+	mavenLocal()
+	flatDir {
+       dirs 'libs'
+	}
+	
+
+}
+
+dependencies {
+ 	//def withoutX = { exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging' }
+	implementation files('/libs/ojdbc8.jar')	
+ 	implementation(name:'ojdbc8', ext:'jar')
+	implementation fileTree(dir: 'libs', include: ['*.jar'])
+	//implementation('org.springframework.boot:spring-boot-starter-web',withoutX)
+	implementation('org.springframework.boot:spring-boot-starter-web') {
+		exclude group: 'org.springframework', module: 'spring-boot-starter-logging'
+	}
+	implementation('org.springframework.boot:spring-boot-starter-web-services')
+	implementation('org.springframework.boot:spring-boot-starter-thymeleaf')
+	implementation('org.springframework.boot:spring-boot-starter-security')
+	implementation('org.springframework.boot:spring-boot-configuration-processor')
+	implementation('org.springframework.boot:spring-boot-starter-jdbc')
+	implementation('org.springframework.boot:spring-boot-starter-log4j2')
+	
+ 
+	// https://mvnrepository.com/artifact/org.springframework.security/spring-security-web
+	implementation group: 'org.springframework.security', name: 'spring-security-web', version: '5.3.6.RELEASE'
+	implementation group: 'org.springframework.security', name: 'spring-security-config', version: '5.3.6.RELEASE'
+	implementation group: 'org.springframework.security', name: 'spring-security-core', version: '5.3.6.RELEASE'
+	
+	// https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-loader
+	implementation  group: 'org.springframework.boot', name: 'spring-boot-loader', version: '2.4.1'
+	
+	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-data-jpa', version: '1.5.6.RELEASE'
+	implementation group: 'commons-dbcp', name: 'commons-dbcp', version: '1.4' 
+	// Get the 19.7.0.0 Oracle JDBC driver along with other companion jars
+    // https://mvnrepository.com/artifact/com.oracle.database.jdbc/ojdbc8
+	implementation group: 'com.oracle.database.jdbc', name: 'ojdbc8', version: '18.3.0.0'
+    
+	// https://mvnrepository.com/artifact/org.springframework.session/spring-session
+	//implementation group: 'org.springframework.session', name: 'spring-session', version: '2.1.9-RELEASE'
+	implementation group: 'org.springframework.session', name: 'spring-session-core', version: '2.7.0'
+    implementation group: 'org.springframework.session', name: 'spring-session', version: '1.3.5.RELEASE'
+
+	implementation group: 'log4j', name: 'log4j', version: '1.2.17'
+	
+	testImplementation('org.springframework.boot:spring-boot-starter-test') {
+		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+	}
+	
+	implementation(project('ui-src'))
+}
+processResources.dependsOn('ui-src:build')
+//task copyPublicResources(type: Copy) {
+//              from '../angular-ui/dist/quiz/'
+//              into 'src/main/resources/static/'
+//}
+jar.dependsOn('processResources')
+jar {
+	from('ui-src/dist') {
+		into 'static'
+	}
+}
+
+//copyPublicResources.dependsOn('ui-src:buildApp')
+//processResources.dependsOn('copyPublicResources')
+
+test {
+	useJUnitPlatform()
+}

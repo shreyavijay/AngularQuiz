@@ -1,0 +1,14 @@
+.test_info {
+	color: green;
+    margin: 10px;
+    font-size: 95%;
+}
+
+.test_info:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.button.save-button.search-button {
+    width: 65%;
+}
